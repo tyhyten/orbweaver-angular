@@ -11,11 +11,9 @@
       });
   });
 
-  app.controller('AppController', function($scope, Auth, API, $location, BandsInTown) {
+  app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService) {
 
     console.log('in AppController');
-
-    console.log(location);
 
     function checkUser(redirectToLogin) {
       API.getMe().then(function(userInfo) {
@@ -55,9 +53,14 @@
     //$scope.$on('login', function() {
     //  $scope.showLogout = true;
     //});
-    BandsInTown.getBands().then(function(response){
-      console.log(response);
-    });
+    //BandsInTown.getBands().then(function(response){
+    //  console.log(response);
+    //});
+    console.log(spotifyService.getArtistIds(["frank sinatra", "kanye west"]));
+
+    //spotifyService.getArtistId("jim james").then(function(artist){
+    //  console.log(artist);
+    //});
 
     $scope.$on('logout', function() {
       $scope.showLogin = false;
