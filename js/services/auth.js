@@ -7,18 +7,18 @@
     var CLIENT_ID = '';
     var REDIRECT_URI = '';
 
-    if (location.host == 'localhost:8000') {
-      CLIENT_ID =	'45dad6f4ea8848a3bd421cfbefdec040';
-      REDIRECT_URI = 'http://localhost:8000/callback.html';
+    if (location.host == 'localhost:8001') {
+      CLIENT_ID = '45dad6f4ea8848a3bd421cfbefdec040';
+      REDIRECT_URI = 'http://localhost:8001/callback.html';
     }
-    //else {
+    //} else {
     //  CLIENT_ID = '9714921402b84783b2a207f1b6e82612';
     //  REDIRECT_URI = 'http://lab.possan.se/thirtify/callback.html';
     //}
 
     function getLoginURL(scopes) {
       return 'https://accounts.spotify.com/authorize?client_id=' + CLIENT_ID
-        + '&redirect_uri=' + encodeURIComponent(REDIRECT_URI)
+        + '&redirect_uri=' + REDIRECT_URI
         + '&scope=' + encodeURIComponent(scopes.join(' '))
         + '&response_type=token';
     }
@@ -26,8 +26,12 @@
     return {
       openLogin: function() {
         var url = getLoginURL([
-          'user-read-email',
+          'user-read-private',
+          'playlist-read-private',
           'playlist-modify-public',
+          'playlist-modify-private',
+          'user-library-read',
+          'user-library-modify',
           'user-follow-read',
           'user-follow-modify'
         ]);
@@ -41,6 +45,10 @@
           'Spotify',
           'menubar=no,location=no,resizable=no,scrollbars=no,status=no, width=' + width + ', height=' + height + ', top=' + top + ', left=' + left
         );
+      },
+      closeLogin: function($scope) {
+        this.setAccessToken('', 0);
+        this.setUsername('');
       },
       getAccessToken: function() {
         var expires = 0 + localStorage.getItem('pa_expires', '0');
@@ -69,6 +77,12 @@
       },
       setUserCountry: function(userCountry) {
         localStorage.setItem('pa_usercountry', userCountry);
+      },
+      setDisplayName: function(name) {
+        localStorage.setItem('display_name', name)
+      },
+      getDisplayName: function() {
+        return localStorage.getItem('display_name')
       }
     }
   });
