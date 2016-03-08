@@ -53,14 +53,10 @@
     //$scope.$on('login', function() {
     //  $scope.showLogout = true;
     //});
-    //BandsInTown.getBands().then(function(response){
-    //  console.log(response);
-    //});
-    console.log(spotifyService.getArtistIds(["frank sinatra", "kanye west"]));
 
-    //spotifyService.getArtistId("jim james").then(function(artist){
-    //  console.log(artist);
-    //});
+    bandsInTownService.getBands().then(function(r){
+      console.log(spotifyService.getArtistIds(r));
+    });
 
     $scope.$on('logout', function() {
       $scope.showLogin = false;
