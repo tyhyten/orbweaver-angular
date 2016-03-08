@@ -53,14 +53,20 @@
     //$scope.$on('login', function() {
     //  $scope.showLogout = true;
     //});
+    function spotifyBands() {
+      bandsInTownService.getBands().then(function(r) {
+        console.log(spotifyService.getArtistIds(r));
+      });
+    }
+   spotifyService.createPlaylist();
 
-    bandsInTownService.getBands().then(function(r){
-      console.log(spotifyService.getArtistIds(r));
-    });
-
-    $scope.$on('logout', function() {
-      $scope.showLogin = false;
-    });
+   spotifyService.getTopTracks(["74HQfWf5eyEm1JN1m35x5W", "6TofIIqBhodHJAZU6vh9sT", "5v5AiSL0Lc0hWuPU6iVL5W", "2yzxX2DI9LFK8VFTyW2zZ8"]).then(function(r){
+     console.log(r);
+   });
+  console.log(Auth.getAccessToken());
+    //$scope.$on('logout', function() {
+    //  $scope.showLogin = false;
+    //});
 
     $scope.getClass = function(path) {
       if ($location.path().substr(0, path.length) == path) {
@@ -122,6 +128,7 @@
     //};
 
     checkUser();
+    //spotifyBands();
   });
 
 })();
