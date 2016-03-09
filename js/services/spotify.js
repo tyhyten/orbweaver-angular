@@ -1,6 +1,6 @@
 var module = angular.module('OrbWeaver');
 
-module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $timeout) {
+module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $window) {
   var baseUrl = 'https://api.spotify.com';
 
   return {
@@ -54,24 +54,20 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       for (var i = 0; i < artistIds.length; i++) {
         (function(i){
           setTimeout(function(){
-            promises.push(
-              $http.get(baseUrl + '/v1/artists/' + artistIds[i] + '/top-tracks' + '?country=US', {
-                headers: {
-                  'Authorization': 'Bearer ' + Auth.getAccessToken()
-                }
-              })
-            )
-          }, 900 * i);
+            $http.get(baseUrl + '/v1/artists/' + artistIds[i] + '/top-tracks' + '?country=US', {
+              headers: {
+                'Authorization': 'Bearer ' + Auth.getAccessToken()
+              }
+            }).success(function(response){
+              console.log('potsticker');
+              topTracks.push(response.tracks)
+            });
+            if (i == artistIds.length - 1) {
+              d.resolve(topTracks);
+            }
+          }, 100 * i);
         })(i);
       }
-      $q.all(promises).then(function(results){
-        results.forEach(function(result) {
-          if (result.data.tracks.length > 0) {
-            topTracks = topTracks.concat(result.data.tracks);
-          }
-        });
-        d.resolve(topTracks);
-      });
       return d.promise;
     },
     createPlaylist: function(){
