@@ -61,22 +61,10 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
               topTracks = topTracks.concat(track.uri);
             });
           }
-          //if (result.tracks && result.tracks.length > 0) {
-          //  topTracks = topTracks.concat(result.tracks);
-          //}
         });
         d.resolve(topTracks)
       });
       return d.promise;
-    },
-    getTrackUris: function(topTracksArray){
-      var trackUris = [];
-      topTracksArray.forEach(function(tracks){
-        tracks.forEach(function(track){
-          trackUris.push(track.uri);
-        })
-      });
-      return trackUris;
     },
     createPlaylist: function(){
       d = $q.defer();
@@ -93,9 +81,9 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       });
       return d.promise;
     },
-    addTracksToPlaylist: function(playlistId, tracksArray) {
-      this.createPlaylist().then(function(){
-        $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + playlistId + '/tracks?' + 'uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh', {}, {
+    addTracksToPlaylist: function(tracksArray) {
+      this.createPlaylist().then(function(response){
+        $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + response + '/tracks?uris=' + tracksArray.slice(0,4).toString(), {}, {
           headers: {
             'Authorization': 'Bearer ' + Auth.getAccessToken()
           }

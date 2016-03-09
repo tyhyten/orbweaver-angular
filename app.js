@@ -58,7 +58,8 @@
       bandsInTownService.getBands().then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
-            console.log(topTracks);
+            spotifyService.addTracksToPlaylist(topTracks);
+            //console.log(topTracks);
             //console.log(topTracks);
             //topTracks.forEach(function(track){
               //debugger;
@@ -70,9 +71,9 @@
         });
       });
     }
-   spotifyService.createPlaylist().then(function(response){
-     spotifyService.addTracksToPlaylist(response);
-   });
+   //spotifyService.createPlaylist().then(function(response){
+   //  spotifyService.addTracksToPlaylist(response);
+   //});
 
    //spotifyService.getTopTracks().then(function(r){
    //  console.log(r);
