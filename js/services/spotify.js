@@ -2,6 +2,21 @@ var module = angular.module('OrbWeaver');
 
 module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $window) {
   var baseUrl = 'https://api.spotify.com';
+  function formatDate(date) {
+    var d = new Date(date),
+      month = '' + (d.getMonth() + 1),
+      day = '' + d.getDate(),
+      year = d.getFullYear();
+    if (month.length < 2) month = '0' + month;
+    if (day.length < 2) day = '0' + day;
+
+    return [year, month, day].join('-');
+  }
+  var startDate = function(){
+    var date = new Date();
+    return formatDate(date.setDate(date.getDate() + 8))
+  };
+  startDate();
 
   return {
     getArtistIds: function(artists) {
@@ -58,18 +73,15 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
         results.forEach(function(result){
           if (result.tracks && result.tracks.length > 0) {
             topTracks = topTracks.concat(result.tracks[0].uri);
-            //result.tracks.forEach(function (track) {
-            //  topTracks = topTracks.concat(track.uri);
-            //});
           }
         });
-        d.resolve(topTracks)
+        d.resolve(topTracks);
       });
       return d.promise;
     },
     createPlaylist: function(){
       d = $q.defer();
-      $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists', { name: "OrbWeaver Playlist"}, {
+      $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists', { name: "OrbWeaver Playlist " }, {
         headers: {
           'Authorization': 'Bearer ' + Auth.getAccessToken()
         }
@@ -97,7 +109,9 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
 });
 
 //we need to get artists ID's for all of the bandsInTownArtists v
-//we need to search "https://api.spotify.com/v1/artists/?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin"
-//we need to take those artists and hit the top tracks end point
-//we need to take those top tracks and create a playlist in the user's account
+//we need to search "https://api.spotify.com/v1/artists/?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin" v
+//we need to take those artists and hit the top tracks end point v
+//we need to take those top tracks and create a playlist in the user's account v
+//We need to get artists that will be in town next week
+// Filter by venue?
 

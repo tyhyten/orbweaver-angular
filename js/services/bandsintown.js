@@ -4,12 +4,16 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   var baseUrl = 'http://api.bandsintown.com';
   var location =  'Denver,CO';
   var distance = '15';
-  var appId = 'ORBWEAVER20'
+  var appId = 'ORBWEAVER20';
+
+  var now = moment();
+  var startDate = moment(now).add(8, 'days').format('YYYY-MM-DD');
+  var endDate = moment(now).add(16, 'days').format('YYYY-MM-DD');
+
   return {
     getEvents: function() {
       var d = $q.defer();
-      console.log(baseUrl + '/events/search.json?' + 'location=' + location + '&radius' + distance + '&app_id=' + appId);
-      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + location + '&radius' + distance + '&app_id=' + appId + '&callback=JSON_CALLBACK', {
+      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + location + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&callback=JSON_CALLBACK', {
 
       }).success(function(r){
         d.resolve(r);
