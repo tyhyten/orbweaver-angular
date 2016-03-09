@@ -58,6 +58,7 @@
       bandsInTownService.getBands().then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
+            console.log(topTracks);
             //topTracks.forEach(function(track){
               //debugger;
             //});

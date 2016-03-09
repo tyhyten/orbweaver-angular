@@ -51,21 +51,19 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       var topTracks = [];
       var d = $q.defer();
       var promises = [];
-      artistIds.forEach(function(artistId) {
-        $timeout(function(){
-          promises.push(
-            $http.get(baseUrl + '/v1/artists/' + artistId + '/top-tracks' + '?country=US', {
-              headers: {
-                'Authorization': 'Bearer ' + Auth.getAccessToken()
-              }
-            }).success(function(response){
-              console.log('getTopTracks success');
-            }).error(function(err){
-              console.log('getTopTracks error ', err);
-            })
-          )
-        }, 1000);
-      });
+      for (var i = 0; i < artistIds.length; i++) {
+        (function(i){
+          setTimeout(function(){
+            promises.push(
+              $http.get(baseUrl + '/v1/artists/' + artistIds[i] + '/top-tracks' + '?country=US', {
+                headers: {
+                  'Authorization': 'Bearer ' + Auth.getAccessToken()
+                }
+              })
+            )
+          }, 900 * i);
+        })(i);
+      }
       $q.all(promises).then(function(results){
         results.forEach(function(result) {
           if (result.data.tracks.length > 0) {
@@ -91,14 +89,16 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       });
       return d.promise;
     },
-    addTracksToPlaylist: function(playlistId) {
-      $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + playlistId + '/tracks?' + 'uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh', {}, {
-        headers: {
-          'Authorization': 'Bearer ' + Auth.getAccessToken()
-        }
-      }).success(function(r){
-        console.log('addTracksToPlaylist: success');
-      })
+    addTracksToPlaylist: function(playlistId, tracksArray) {
+      this.createPlaylist().then(function(){
+        $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + playlistId + '/tracks?' + 'uris=spotify:track:4iV5W9uYEdYUVa79Axb7Rh', {}, {
+          headers: {
+            'Authorization': 'Bearer ' + Auth.getAccessToken()
+          }
+        }).success(function(r){
+          console.log('addTracksToPlaylist: success');
+        })
+      });
     }
   }
 });
