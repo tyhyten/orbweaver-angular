@@ -58,6 +58,7 @@
       bandsInTownService.getBands().then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
+            console.log(topTracks);
             spotifyService.addTracksToPlaylist(topTracks);
             //console.log(topTracks);
             //console.log(topTracks);

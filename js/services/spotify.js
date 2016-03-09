@@ -57,9 +57,10 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       $q.all(promises).then(function(results){
         results.forEach(function(result){
           if (result.tracks && result.tracks.length > 0) {
-            result.tracks.forEach(function (track) {
-              topTracks = topTracks.concat(track.uri);
-            });
+            topTracks = topTracks.concat(result.tracks[0].uri);
+            //result.tracks.forEach(function (track) {
+            //  topTracks = topTracks.concat(track.uri);
+            //});
           }
         });
         d.resolve(topTracks)
@@ -83,7 +84,7 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
     },
     addTracksToPlaylist: function(tracksArray) {
       this.createPlaylist().then(function(response){
-        $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + response + '/tracks?uris=' + tracksArray.slice(0,4).toString(), {}, {
+        $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists/' + response + '/tracks?uris=' + tracksArray.toString(), {}, {
           headers: {
             'Authorization': 'Bearer ' + Auth.getAccessToken()
           }
