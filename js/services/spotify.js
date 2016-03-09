@@ -4,22 +4,6 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
   var baseUrl = 'https://api.spotify.com';
 
   return {
-    //getArtistIds: function() {
-    //  var artistsArray = [];
-    //  var d = $q.defer();
-    //  bandsInTownArtists.forEach(function(artist) {
-    //    $http.get(baseUrl + '/v1/search?q=' + artist + '&type=artist', {
-    //
-    //    }).success(function(r) {
-    //      artistsArray.push(r.artists.items[0].id);
-    //      //d.resolve(artistsArray);
-    //    }).error(function(e) {
-    //      console.log("couldn't find " + artist)
-    //    });
-    //  });
-    //  d.resolve(artistsArray);
-    //  return d.promise;
-    //},
     getArtistIds: function(artists) {
       var artistsArray = [];
       var d = $q.defer();
@@ -53,22 +37,46 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       var promises = [];
       for (var i = 0; i < artistIds.length; i++) {
         (function(i){
+          var d = $q.defer();
           setTimeout(function(){
             $http.get(baseUrl + '/v1/artists/' + artistIds[i] + '/top-tracks' + '?country=US', {
               headers: {
                 'Authorization': 'Bearer ' + Auth.getAccessToken()
               }
             }).success(function(response){
-              console.log('potsticker');
-              topTracks.push(response.tracks)
+              console.log('getTopTracks: success');
+              d.resolve(response);
+            }).error(function(err){
+              d.resolve(err);
+              console.log('getTopTracks: error');
             });
-            if (i == artistIds.length - 1) {
-              d.resolve(topTracks);
-            }
-          }, 100 * i);
+          }, 200 * i);
+          promises.push(d.promise);
         })(i);
       }
+      $q.all(promises).then(function(results){
+        results.forEach(function(result){
+          if (result.tracks && result.tracks.length > 0) {
+            result.tracks.forEach(function (track) {
+              topTracks = topTracks.concat(track.uri);
+            });
+          }
+          //if (result.tracks && result.tracks.length > 0) {
+          //  topTracks = topTracks.concat(result.tracks);
+          //}
+        });
+        d.resolve(topTracks)
+      });
       return d.promise;
+    },
+    getTrackUris: function(topTracksArray){
+      var trackUris = [];
+      topTracksArray.forEach(function(tracks){
+        tracks.forEach(function(track){
+          trackUris.push(track.uri);
+        })
+      });
+      return trackUris;
     },
     createPlaylist: function(){
       d = $q.defer();
