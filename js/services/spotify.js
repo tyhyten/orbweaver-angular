@@ -1,22 +1,10 @@
 var module = angular.module('OrbWeaver');
 
-module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $window) {
+module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
   var baseUrl = 'https://api.spotify.com';
-  function formatDate(date) {
-    var d = new Date(date),
-      month = '' + (d.getMonth() + 1),
-      day = '' + d.getDate(),
-      year = d.getFullYear();
-    if (month.length < 2) month = '0' + month;
-    if (day.length < 2) day = '0' + day;
-
-    return [year, month, day].join('-');
-  }
-  var startDate = function(){
-    var date = new Date();
-    return formatDate(date.setDate(date.getDate() + 8))
-  };
-  startDate();
+  var now = moment();
+  var startDate = moment(now).add(8, 'days').format('M/DD');
+  var endDate = moment(now).add(16, 'days').format('M/DD');
 
   return {
     getArtistIds: function(artists) {
@@ -24,22 +12,27 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
       var d = $q.defer();
       var promises = [];
       artists.forEach(function(artist) {
-        promises.push(
+        var deferred = $q.defer();
+        //promises.push(
           $http.get(baseUrl + '/v1/search?q=' + artist + '&type=artist', {
             headers: {
               'Authorization': 'Bearer ' + Auth.getAccessToken()
             }
-          }).success(function(){
+          }).success(function(response){
+            deferred.resolve(response);
             console.log('getArtistIds: success!')
           }).error(function(err){
+            deferred.resolve(err);
             console.log('getArtistIds: error', err);
-          })
-        )
+          });
+        //);
+        promises.push(deferred.promise)
       });
+
       $q.all(promises).then(function(results){
         results.forEach(function(result) {
-          if (result.data.artists.items.length > 0) {
-            artistsArray = artistsArray.concat(result.data.artists.items[0].id);
+          if (result.artists && result.artists.items.length > 0) {
+            artistsArray = artistsArray.concat(result.artists.items[0].id);
           }
         });
         d.resolve(artistsArray);
@@ -81,7 +74,7 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth, $
     },
     createPlaylist: function(){
       d = $q.defer();
-      $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists', { name: "OrbWeaver Playlist " }, {
+      $http.post(baseUrl + '/v1/users/' + Auth.getUsername() + '/playlists', { name: "OrbWeaver " + startDate + " - " + endDate }, {
         headers: {
           'Authorization': 'Bearer ' + Auth.getAccessToken()
         }
