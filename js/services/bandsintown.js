@@ -11,9 +11,9 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   var endDate = moment(now).add(14, 'days').format('YYYY-MM-DD');
 
   return {
-    getEvents: function() {
+    getEvents: function(userLocation) {
       var d = $q.defer();
-      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + location + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&callback=JSON_CALLBACK', {
+      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&callback=JSON_CALLBACK', {
 
       }).success(function(r){
         d.resolve(r);
@@ -22,10 +22,11 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
       });
       return d.promise;
     },
-    getBands: function() {
-      artistsArray = [];
+    getBands: function(userLocation) {
+      console.log(userLocation);
+      var artistsArray = [];
       var d = $q.defer();
-      this.getEvents()
+      this.getEvents(userLocation)
       .then(function(r){
           r.forEach(function(event) {
             event.artists.forEach(function (artist) {

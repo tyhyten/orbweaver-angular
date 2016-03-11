@@ -14,7 +14,7 @@
       });
   });
 
-  app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService) {
+  app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService, userService) {
 
     function checkUser(redirectToLogin) {
       API.getMe().then(function(userInfo) {
@@ -55,9 +55,11 @@
     //  $scope.showLogout = true;
     //});
 
+    $scope.weave = weave;
 
-    function spotifyBands() {
-      bandsInTownService.getBands().then(function(bandsResponse) {
+    function weave() {
+      console.log('weaving');
+      bandsInTownService.getBands(userService.getUserLocation()).then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             console.log(topTracks);
@@ -66,7 +68,6 @@
         });
       });
     }
-
 
     //$scope.$on('logout', function() {
     //  $scope.showLogin = false;
@@ -132,7 +133,21 @@
     //};
 
     checkUser();
-    //spotifyBands();
   });
 
 })();
+
+
+//we need to get artists ID's for all of the bandsInTownArtists v
+//we need to search "https://api.spotify.com/v1/artists/?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin" v
+//we need to take those artists and hit the top tracks end point v
+//we need to take those top tracks and create a playlist in the user's account v
+//We need to get artists that will be in town next week v
+//Perhaps we change it to be shows happening now up to two weeks from now v
+//Update search by address v
+// Filter by venue?
+// Make loging in and staying logged in work
+//display success message for playlist creation
+//Pass user location into bandsintown call
+//Plug user data and city into a backend via API call
+//Disable submit button while playlist is being created to prevent restarting the process
