@@ -35,7 +35,6 @@
           'user-follow-read',
           'user-follow-modify'
         ]);
-
         var width = 450,
           height = 730,
           left = (screen.width / 2) - (width / 2),

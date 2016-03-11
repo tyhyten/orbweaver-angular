@@ -21,6 +21,8 @@ module.directive('locationForm', function(userService){
         userService.setUserLocation(userCity);
         console.log('user location set to: ', userService.getUserLocation());
         scope.weave();
+        scope.form.$setPristine();
+        scope.formLocation = "";
       };
     }
   }
