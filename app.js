@@ -21,6 +21,7 @@
         Auth.setDisplayName(userInfo.display_name);
         Auth.setUsername(userInfo.id);
         Auth.setUserCountry(userInfo.country);
+        userService.setUserImage(userInfo.images[0].url);
         if (redirectToLogin) {
           $scope.$emit('login');
         }
@@ -41,6 +42,8 @@
 
     $scope.$watch(function() { return localStorage.getItem('pa_token'); }, function() {
       $scope.isLoggedIn = (Auth.getAccessToken() != '');
+      $scope.userPhoto = userService.getUserImage();
+
     });
     //$scope.showLogout = $scope.isLoggedIn;
     //$scope.showlogin = !$scope.isLoggedIn;
@@ -52,7 +55,6 @@
     //});
 
     //$scope.$on('login', function() {
-    //  $scope.showLogout = true;
     //});
 
     $scope.weave = weave;
@@ -151,3 +153,6 @@
 //Pass user location into bandsintown call
 //Plug user data and city into a backend via API call
 //Disable submit button while playlist is being created to prevent restarting the process
+//Chunk top tracks call into groups of 15 with a timeout between to avoid rate limit. Try doing in app.js rather than method itself because of complexity of using two IIFE's inside of two forEach's
+//Add SASS
+//Add background image

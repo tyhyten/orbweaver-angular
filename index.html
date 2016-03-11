@@ -17,12 +17,29 @@
     <script src="js/services/spotify.js"></script>
     <script src="js/directives/locationform.js"></script>
     <link rel="stylesheet" href="/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
+    <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
 
   </head>
   <body>
-    <div ng-controller="AppController">
-      <log-in></log-in>
-      <location-form weave="weave()"></location-form>
+    <div ng-controller="AppController" class="container">
+
+      <div class="navbar">
+        <div class="user">
+          <img ng-src="{{userPhoto}}" />
+        </div>
+        <log-in></log-in>
+      </div>
+      <div class="center">
+        <h1>OrbWeaver</h1>
+        <location-form weave="weave()"></location-form>
+      </div>
+
+
+
+
+
+
+
     </div>
   </body>
 </html>

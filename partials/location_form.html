@@ -1,5 +1,4 @@
-<form novalidate name="form">
-  <input type="text" g-places-autocomplete options="autocompleteOptions" ng-model="formLocation"  />
-  {{location}}
+<form novalidate name="form" class="form">
+  <input type="text" g-places-autocomplete options="autocompleteOptions" autofocus placeholder="enter a city" class="text-input" ng-model="formLocation"  />
   <input type="submit" ng-click="saveAddress(formLocation)" />
 </form>
