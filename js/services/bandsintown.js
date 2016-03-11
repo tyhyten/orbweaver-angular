@@ -7,8 +7,8 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   var appId = 'ORBWEAVER20';
 
   var now = moment();
-  var startDate = moment(now).add(8, 'days').format('YYYY-MM-DD');
-  var endDate = moment(now).add(16, 'days').format('YYYY-MM-DD');
+  var startDate = moment(now).format('YYYY-MM-DD');
+  var endDate = moment(now).add(14, 'days').format('YYYY-MM-DD');
 
   return {
     getEvents: function() {

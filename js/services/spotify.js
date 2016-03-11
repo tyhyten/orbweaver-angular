@@ -3,8 +3,8 @@ var module = angular.module('OrbWeaver');
 module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
   var baseUrl = 'https://api.spotify.com';
   var now = moment();
-  var startDate = moment(now).add(8, 'days').format('M/DD');
-  var endDate = moment(now).add(16, 'days').format('M/DD');
+  var startDate = moment(now).format('M/DD');
+  var endDate = moment(now).add(14, 'days').format('M/DD');
 
   return {
     getArtistIds: function(artists) {
