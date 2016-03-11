@@ -13,7 +13,6 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
       var promises = [];
       artists.forEach(function(artist) {
         var deferred = $q.defer();
-        //promises.push(
           $http.get(baseUrl + '/v1/search?q=' + artist + '&type=artist', {
             headers: {
               'Authorization': 'Bearer ' + Auth.getAccessToken()
@@ -25,7 +24,6 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
             deferred.resolve(err);
             console.log('getArtistIds: error', err);
           });
-        //);
         promises.push(deferred.promise)
       });
 
@@ -56,7 +54,7 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
               d.resolve(response);
             }).error(function(err){
               d.resolve(err);
-              console.log('getTopTracks: error');
+              console.log('getTopTracks: error', err);
             });
           }, 200 * i);
           promises.push(d.promise);
@@ -105,6 +103,9 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
 //we need to search "https://api.spotify.com/v1/artists/?ids=0oSGxfWSnnOXhD2fKuz2Gy,3dBVyJ7JuOMt4GE9607Qin" v
 //we need to take those artists and hit the top tracks end point v
 //we need to take those top tracks and create a playlist in the user's account v
-//We need to get artists that will be in town next week
+//We need to get artists that will be in town next week v
+//Perhaps we change it to be shows happening now up to two weeks from now
+//Update search by zipcode
 // Filter by venue?
-
+// Make loging in and staying logged in work
+//display success message for playlist creation

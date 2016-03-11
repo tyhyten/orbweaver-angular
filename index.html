@@ -5,19 +5,24 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/moment/moment.js"></script>
+    <script src="bower_components/angular-google-places-autocomplete/src/autocomplete.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
     <script src="app.js"></script>
     <script src="js/services/auth.js"></script>
     <script src="js/services/api.js"></script>
     <script src="js/directives/login.js"></script>
     <script src="js/services/bandsintown.js"></script>
+    <script src="js/services/user.js"></script>
     <script src="js/services/spotify.js"></script>
-    <script src="https://cdn.jsdelivr.net/lodash/4.6.1/lodash.min.js"></script>
+    <script src="js/directives/locationform.js"></script>
+    <link rel="stylesheet" href="/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
 
   </head>
   <body>
     <div ng-controller="AppController">
       <log-in></log-in>
     </div>
+    <location-form></location-form>
   </body>
 </html>

@@ -1,5 +1,8 @@
 (function() {
-  var app = angular.module('OrbWeaver', ['ngRoute']);
+  var app = angular.module('OrbWeaver', [
+    'ngRoute',
+    'google.places'
+  ]);
 
   app.config(function($routeProvider) {
     $routeProvider.
@@ -12,8 +15,6 @@
   });
 
   app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService) {
-
-    console.log('in AppController');
 
     function checkUser(redirectToLogin) {
       API.getMe().then(function(userInfo) {
@@ -53,32 +54,20 @@
     //$scope.$on('login', function() {
     //  $scope.showLogout = true;
     //});
-    function spotifyBands() {
 
+
+    function spotifyBands() {
       bandsInTownService.getBands().then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             console.log(topTracks);
             spotifyService.addTracksToPlaylist(topTracks);
-            //console.log(topTracks);
-            //console.log(topTracks);
-            //topTracks.forEach(function(track){
-              //debugger;
-            //});
           });
-            //spotifyService.createPlaylist().then(function(playlistName){
-            //  spotifyService.addTracksToPlaylist(playlistName,)
-            //});
         });
       });
     }
-   //spotifyService.createPlaylist().then(function(response){
-   //  spotifyService.addTracksToPlaylist(response);
-   //});
 
-   //spotifyService.getTopTracks().then(function(r){
-   //  console.log(r);
-   //});
+
     //$scope.$on('logout', function() {
     //  $scope.showLogin = false;
     //});
@@ -143,7 +132,7 @@
     //};
 
     checkUser();
-    spotifyBands();
+    //spotifyBands();
   });
 
 })();
