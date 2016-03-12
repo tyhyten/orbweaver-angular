@@ -28,11 +28,13 @@
             <img ng-src="{{userPhoto}}" />
           </div>
         </div>
-        <div class="column column-10">
-          <div class="name">
-              <span>{{displayName}}</span>
-            </div>
-            <log-in></log-in>
+        <div class="column column-8"></div>
+        <div class="column column-2">
+          <!--<div class="name">-->
+            <a ng-click="login()" ng-hide="isLoggedIn" href="">Login</a>
+            <a ng-click="logout()" ng-show="isLoggedIn" href="">Logout</a>
+            <span ng-if="isLoggedIn">Hello, {{username}}! </span>
+          <!--</div>-->
         </div>
       </div>
       <div class="center">

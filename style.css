@@ -36,47 +36,47 @@ body {
 }
 
 .column-1 {
-  width: 6.86666666667%;
+  width: 8.33333333333%;
 }
 
 .column-2 {
-  width: 15.3333333333%;
+  width: 16.6666666666%;
 }
 
 .column-3 {
-  width: 23.8%;
+  width: 24.9999999999%;
 }
 
 .column-4 {
-  width: 32.2666666667%;
+  width: 33.3333333332%;
 }
 
 .column-5 {
-  width: 40.7333333333%;
+  width: 41.6666666665%;
 }
 
 .column-6 {
-  width: 49.2%;
+  width: 49.9999999998%;
 }
 
 .column-7 {
-  width: 57.6666666667%;
+  width: 58.3333333331%;
 }
 
 .column-8 {
-  width: 66.1333333333%;
+  width: 66.6666666664%;
 }
 
 .column-9 {
-  width: 74.6%;
+  width: 74.9999999997%;
 }
 
 .column-10 {
-  width: 83.0666666667%;
+  width: 83.3333333333%;
 }
 
 .column-11 {
-  width: 91.5333333333%;
+  width: 91.6666666663%;
 }
 
 .column-12 {
@@ -92,17 +92,24 @@ body {
 }
 
 .navbar span {
+  font-family: 'Raleway', sans-serif;
+  font-size: 18px;
+  color: white;
   float: right;
+  top: 50%;
+  margin: 38px 47px 0 0;
+  opacity: 0.6;
+
 }
 .user {
   /*float: left;*/
   /*display: inline;*/
   /*width: 20%;*/
 }
-.name {
-  /*float: right;*/
-  /*display: inline;*/
-  /*width: 80%;*/
+.name a {
+  /*bottom: 50%;*/
+  /*left: 50%;*/
+  float: right;
 }
 
 .user img {

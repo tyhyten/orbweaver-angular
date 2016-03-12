@@ -33,6 +33,15 @@
       });
     }
 
+    $scope.login = function() {
+      Auth.openLogin();
+    };
+    $scope.username = Auth.getDisplayName();
+    $scope.logout = function() {
+      Auth.closeLogin();
+      scope.$emit('logout')
+    };
+
     $scope.$on('initialized', function(){
       $scope.userPhoto = userService.getUserImage();
       $scope.displayName = Auth.getDisplayName();
