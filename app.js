@@ -17,11 +17,13 @@
   app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService, userService) {
 
     function checkUser(redirectToLogin) {
+      console.log('called')
       API.getMe().then(function(userInfo) {
         Auth.setDisplayName(userInfo.display_name);
         Auth.setUsername(userInfo.id);
         Auth.setUserCountry(userInfo.country);
         userService.setUserImage(userInfo.images[0].url);
+        $scope.$emit('initialized');
         if (redirectToLogin) {
           $scope.$emit('login');
         }
@@ -30,6 +32,11 @@
         //$location.replace();
       });
     }
+
+    $scope.$on('initialized', function(){
+      $scope.userPhoto = userService.getUserImage();
+      $scope.displayName = Auth.getDisplayName();
+    });
 
     window.addEventListener("message", function(event) {
       console.log('got postmessage', event);
@@ -42,7 +49,6 @@
 
     $scope.$watch(function() { return localStorage.getItem('pa_token'); }, function() {
       $scope.isLoggedIn = (Auth.getAccessToken() != '');
-      $scope.userPhoto = userService.getUserImage();
 
     });
     //$scope.showLogout = $scope.isLoggedIn;
@@ -133,7 +139,6 @@
     //  playlist.editing = false;
     //  $scope.focusInput = false;
     //};
-
     checkUser();
   });
 

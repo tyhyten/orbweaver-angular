@@ -22,12 +22,18 @@
   </head>
   <body>
     <div ng-controller="AppController" class="container">
-
-      <div class="navbar">
-        <div class="user">
-          <img ng-src="{{userPhoto}}" />
+      <div class ="row navbar">
+        <div class="column column-2">
+          <div class="user">
+            <img ng-src="{{userPhoto}}" />
+          </div>
         </div>
-        <log-in></log-in>
+        <div class="column column-10">
+          <div class="name">
+              <span>{{displayName}}</span>
+            </div>
+            <log-in></log-in>
+        </div>
       </div>
       <div class="center">
         <h1>OrbWeaver</h1>
