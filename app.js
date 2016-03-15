@@ -39,8 +39,10 @@
     $scope.username = Auth.getDisplayName();
     $scope.logout = function() {
       Auth.closeLogin();
-      scope.$emit('logout')
+      $scope.$emit('logout')
     };
+
+    $scope.isLoggedIn = (Auth.getAccessToken() != '');
 
     $scope.$on('initialized', function(){
       $scope.userPhoto = userService.getUserImage();

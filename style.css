@@ -3,14 +3,114 @@ html {
   padding: 0 !important;
 }
 body {
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('background-full.jpg');
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-full.jpg');
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
   margin: 0 !important;
   padding: 0 !important;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+.blurred {
+  background-image: url('background-blurred.jpg');
+  overflow: hidden;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+img {
+  position: absolute;
+  top: 40px;
+  left: 8px;
+  width: 110px;
+  border-radius: 24px;
+}
+
+.button {
+  width: 200px;
+  height: 50px;
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  margin: auto;
+  border: 2px solid white;
+  border-radius: 24px;
+
+  padding: 6px 18px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 0 0 160px;
+
+  text-align: center;
+  line-height: 1.3;
+  font-size: 28px;
+  text-transform: none;
+
+  font-weight: 400;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+}
+
+.button:hover {
+  border: 2px solid white;
+  color: white;
+  background: linear-gradient(rgba(207, 255, 68, 0.2), rgba(207, 255, 68, 0.2));
+}
+
+.logout {
+  position: absolute;
+  top: 7px;
+  left: 7px;
+  width: 70px;
+  height: 14px;
+  border: 1px solid white;
+  border-radius: 24px;
+
+  padding: 6px 18px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  flex: 0 0 160px;
+
+  text-align: center;
+  line-height: 1.3;
+  font-size: 14px;
+  text-transform: none;
+
+  font-weight: 400;
+  font-family: 'Raleway', sans-serif;
+  color: white;
+}
+
+.logout:hover {
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
+}
+
+.glass {
+
+}
+
+
 
 .row,
 .column {
@@ -32,7 +132,7 @@ body {
 }
 
 .column + .column {
-  margin-left: 1.6%;
+  /*margin-left: 1.6%;*/
 }
 
 .column-1 {
@@ -83,12 +183,12 @@ body {
   width: 100%;
 }
 
-.navbar {
-  /*display: inline;*/
-  /*position: fixed;*/
-  height: 100px;
-  /*width: 100%;*/
+.center-nav {
+  height: 325px;
   background-color: rgba(145, 164, 55, 0.2);
+  margin: auto;
+  position: absolute;
+  top: 0; left: 0; bottom: 0; right: 0;
 }
 
 .navbar span {

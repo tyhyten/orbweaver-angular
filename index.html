@@ -21,26 +21,30 @@
 
   </head>
   <body>
-    <div ng-controller="AppController" class="container">
-      <div class ="row navbar">
-        <div class="column column-2">
-          <div class="user">
-            <img ng-src="{{userPhoto}}" />
-          </div>
-        </div>
-        <div class="column column-8"></div>
-        <div class="column column-2">
-          <!--<div class="name">-->
-            <a ng-click="login()" ng-hide="isLoggedIn" href="">Login</a>
-            <a ng-click="logout()" ng-show="isLoggedIn" href="">Logout</a>
-            <span ng-if="isLoggedIn">Hello, {{username}}! </span>
+    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}">
+    <div class="logout" ng-click="logout()" href="" ng-if="isLoggedIn">logout</div>
+      <img ng-src="{{userPhoto}}" ng-if="isLoggedIn" />
+    <div class="login" ng-if="!isLoggedIn">
+      <div class="button" ng-click="login()">
+        login
+      </div>
+    </div>
+
+
+
+
+    <!--<div class="row">-->
+      <!--<div class="column-12">-->
+        <!--<div class="center-nav">-->
+          <!--<div class="column column-4"></div>-->
+          <!--<div class="column column-4">-->
+            <!--shit here-->
           <!--</div>-->
-        </div>
-      </div>
-      <div class="center">
-        <h1>OrbWeaver</h1>
-        <location-form weave="weave()"></location-form>
-      </div>
+          <!--<div class="column column-4"></div>-->
+
+        <!--</div>-->
+      <!--</div>-->
+    <!--</div>-->
 
 
 
@@ -48,6 +52,32 @@
 
 
 
+
+
+
+
+
+
+
+      <!--<div class ="row">-->
+        <!--<div class="column column-2 navbar">-->
+          <!--<div class="user">-->
+            <!--<img ng-src="{{userPhoto}}" />-->
+          <!--</div>-->
+        <!--</div>-->
+        <!--<div class="column column-8 navbar"></div>-->
+        <!--<div class="column column-2 navbar">-->
+          <!--&lt;!&ndash;<div class="name">&ndash;&gt;-->
+            <!--<a ng-click="login()" ng-hide="isLoggedIn" href="">Login</a>-->
+            <!--<a ng-click="logout()" ng-show="isLoggedIn" href="">Logout</a>-->
+            <!--<span ng-if="isLoggedIn">Hello, {{username}}! </span>-->
+          <!--&lt;!&ndash;</div>&ndash;&gt;-->
+        <!--</div>-->
+      <!--</div>-->
+      <!--<div class="center">-->
+        <!--<h1>OrbWeaver</h1>-->
+        <!--<location-form weave="weave()"></location-form>-->
+      <!--</div>-->
     </div>
   </body>
 </html>
