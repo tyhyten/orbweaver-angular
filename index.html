@@ -22,41 +22,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=false">
   </head>
   <body>
-    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}" class="containerx  ">
-      <div class="blackbar">
-        <div class="logout" ng-click="logout()" href="" ng-if="isLoggedIn">logout</div>
-      </div>
+
+    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}">
+
+      <div class="logout" ng-click="logout()" ng-if="isLoggedIn">logout</div>
+
       <div class="login" ng-if="!isLoggedIn">
         <div class="button" ng-click="login()">
           login
         </div>
       </div>
 
-      <!--<div id="how-to">-->
-        <!--<p>OrbWeaver builds a playlist with the top track of artists visiting your town during the next two weeks.-->
-        <!--Start finding new music and new shows now.</p>-->
-      <!--</div>-->
       <img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />
+
       <div id="search" ng-if="isLoggedIn">
-        <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />-->
         <location-form weave="weave()"></location-form>
       </div>
 
-
-
-    <!--<div class="row">-->
-      <!--<div class="column-12">-->
-        <!--<div class="center-nav">-->
-          <!--<div class="column column-4"></div>-->
-          <!--<div class="column column-4">-->
-            <!--shit here-->
-          <!--</div>-->
-          <!--<div class="column column-4"></div>-->
-
-        <!--</div>-->
-      <!--</div>-->
-    <!--</div>-->
-
     </div>
+  
   </body>
 </html>

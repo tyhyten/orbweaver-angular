@@ -5,8 +5,8 @@
     padding: 0 !important;
   }
   body {
-    /*background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-full.jpg');*/
-    background: black;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-full.jpg');
+    /*background: black;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -19,8 +19,8 @@
   }
 
   .blurred {
-    /*background-image: url('background-blurred.jpg');*/
-    background: black;
+    background-image: url('background-blurred.jpg');
+    /*background: black;*/
     overflow: hidden;
     -webkit-background-size: cover;
     -moz-background-size: cover;
