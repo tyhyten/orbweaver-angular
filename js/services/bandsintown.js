@@ -2,8 +2,7 @@ var module = angular.module('OrbWeaver');
 
 module.factory('bandsInTownService', function(Auth, $q, $http) {
   var baseUrl = 'http://api.bandsintown.com';
-  var location =  'Denver,CO';
-  var distance = '15';
+  var distance = '4';
   var appId = 'ORBWEAVER20';
 
   var now = moment();
@@ -13,7 +12,7 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   return {
     getEvents: function(userLocation) {
       var d = $q.defer();
-      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&callback=JSON_CALLBACK', {
+      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&per_page=100' + '&callback=JSON_CALLBACK', {
 
       }).success(function(r){
         d.resolve(r);

@@ -13,7 +13,7 @@
     }
     //} else {
     //  CLIENT_ID = '9714921402b84783b2a207f1b6e82612';
-    //  REDIRECT_URI = 'http://lab.possan.se/thirtify/callback.html';
+    //  REDIRECT_URI = 'put public address here once project live';
     //}
 
     function getLoginURL(scopes) {
