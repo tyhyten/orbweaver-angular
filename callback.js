@@ -10,7 +10,6 @@ function init() {
 
 //      refactor this to use a service, because postMessage with a splat isn't ideal
   if (hash.access_token) {
-    debugger;
     window.opener.postMessage(JSON.stringify({
       type:'access_token',
       access_token: hash.access_token,

@@ -108,5 +108,9 @@
 //Chunk top tracks call into groups of 15 with a timeout between to avoid rate limit. Try doing in app.js rather than method itself because of complexity of using two IIFE's inside of two forEach's
 //Add SASS
 //Add background image
-//Shovel failed 429 calls into their own collection and re-run function
-//check accuracy of process
+//Shovel failed 429 calls into their own collection and re-run function after timeout
+
+//two options or two apps: one that works for any city and uses random selection of artists, or one for denver for specific venues with all artists
+
+//deal with page numbers in bandsintown call - limit to venues, filter results by venue
+//add current location option that uses bandsintown location

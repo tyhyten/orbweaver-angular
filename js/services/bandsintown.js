@@ -8,11 +8,13 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   var now = moment();
   var startDate = moment(now).format('YYYY-MM-DD');
   var endDate = moment(now).add(14, 'days').format('YYYY-MM-DD');
+  var venues = [];
 
   return {
     getEvents: function(userLocation) {
       var d = $q.defer();
-      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&per_page=100' + '&callback=JSON_CALLBACK', {
+      console.log(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius=' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&per_page=100' + '&callback=JSON_CALLBACK');
+      $http.jsonp(baseUrl + '/events/search.json?' + 'location=' + userLocation + '&radius=' + distance + '&date=' + startDate + ',' + endDate + '&app_id=' + appId + '&per_page=100' + '&callback=JSON_CALLBACK', {
 
       }).success(function(r){
         d.resolve(r);
@@ -40,3 +42,5 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
     }
   }
 });
+
+//need to go through all all pages, then loop results through getBands, which checks against list of bands.
