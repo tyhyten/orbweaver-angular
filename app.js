@@ -69,7 +69,6 @@
     function weave() {
       console.log('weaving');
       bandsInTownService.getBands(userService.getUserLocation()).then(function(bandsResponse) {
-        console.log(bandsResponse);
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
