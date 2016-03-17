@@ -175,10 +175,8 @@
 
   .pac-container {
     background-color: black !important;
-    /*font-size: 46px !important;*/
   }
   .pac-item {
-    /*font-size: 1em !important;*/
     color: white;
   }
 
@@ -188,7 +186,6 @@
   }
 
   .pac-matched {
-    /*font-size: 20px !important;*/
     color: #cbf57d;
   }
 
