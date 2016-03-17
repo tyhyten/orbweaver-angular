@@ -1,11 +1,13 @@
+/*Mobile Layout*/
+
 @media screen and (max-width: 480px) {
-  
+
   html {
     margin: 0 !important;
     padding: 0 !important;
   }
   body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-full.jpg');
+    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-sharp.jpg');
     /*background: black;*/
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -44,9 +46,7 @@
     border-radius: 24px;
 
     padding: 6px 18px;
-
-    cursor: pointer;
-
+    cursor: hand;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -297,4 +297,10 @@
   /*transform: translate(-50%,-50%);*/
 
 /*}*/
+}
+
+@media screen and (max-width: 320px){
+  #user-image {
+    width: 164px;
+  }
 }
