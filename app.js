@@ -17,7 +17,6 @@
   app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService, userService) {
 
     function checkUser(redirectToLogin) {
-      console.log('called')
       API.getMe().then(function(userInfo) {
         Auth.setDisplayName(userInfo.display_name);
         Auth.setUsername(userInfo.id);
@@ -29,7 +28,6 @@
         }
       }, function(err) {
         console.log(err);
-        //$location.replace();
       });
     }
 
