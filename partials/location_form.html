@@ -1,4 +1,5 @@
+<span class="title">Enter your city.</span>
 <form novalidate name="form" class="form">
-  <input type="text" g-places-autocomplete options="autocompleteOptions" autofocus placeholder="enter a city" class="text-input" ng-model="formLocation"  />
-  <input type="submit" ng-click="saveAddress(formLocation)" />
+  <input type="text" g-places-autocomplete options="autocompleteOptions" autofocus class="text-input" ng-model="formLocation"  />
+  <div ng-click="saveAddress(formLocation)" class="button">Go</div>
 </form>

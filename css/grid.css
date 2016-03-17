@@ -1,0 +1,70 @@
+.row,
+.column {
+  box-sizing: border-box;
+}
+
+.row:before,
+.row:after {
+  content: " ";
+  display: table;
+}
+.row:after {
+  clear: both;
+}
+
+.column {
+  position: relative;
+  float: left;
+}
+
+.column + .column {
+  /*margin-left: 1.6%;*/
+}
+
+.column-1 {
+  width: 8.33333333333%;
+}
+
+.column-2 {
+  width: 16.6666666666%;
+}
+
+.column-3 {
+  width: 24.9999999999%;
+}
+
+.column-4 {
+  width: 33.3333333332%;
+}
+
+.column-5 {
+  width: 41.6666666665%;
+}
+
+.column-6 {
+  width: 49.9999999998%;
+}
+
+.column-7 {
+  width: 58.3333333331%;
+}
+
+.column-8 {
+  width: 66.6666666664%;
+}
+
+.column-9 {
+  width: 74.9999999997%;
+}
+
+.column-10 {
+  width: 83.3333333333%;
+}
+
+.column-11 {
+  width: 91.6666666663%;
+}
+
+.column-12 {
+  width: 100%;
+}

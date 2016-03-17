@@ -16,20 +16,31 @@
     <script src="js/services/user.js"></script>
     <script src="js/services/spotify.js"></script>
     <script src="js/directives/locationform.js"></script>
+    <link rel="stylesheet" href="/css/grid.css">
     <link rel="stylesheet" href="/bower_components/angular-google-places-autocomplete/src/autocomplete.css">
     <link href='https://fonts.googleapis.com/css?family=Raleway' rel='stylesheet' type='text/css'>
-
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=false">
   </head>
   <body>
-    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}">
-    <div class="logout" ng-click="logout()" href="" ng-if="isLoggedIn">logout</div>
-      <img ng-src="{{userPhoto}}" ng-if="isLoggedIn" />
-    <div class="login" ng-if="!isLoggedIn">
-      <div class="button" ng-click="login()">
-        login
+    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}" class="containerx  ">
+      <div class="blackbar">
+        <div class="logout" ng-click="logout()" href="" ng-if="isLoggedIn">logout</div>
       </div>
-    </div>
+      <div class="login" ng-if="!isLoggedIn">
+        <div class="button" ng-click="login()">
+          login
+        </div>
+      </div>
 
+      <!--<div id="how-to">-->
+        <!--<p>OrbWeaver builds a playlist with the top track of artists visiting your town during the next two weeks.-->
+        <!--Start finding new music and new shows now.</p>-->
+      <!--</div>-->
+      <img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />
+      <div id="search" ng-if="isLoggedIn">
+        <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />-->
+        <location-form weave="weave()"></location-form>
+      </div>
 
 
 
@@ -46,38 +57,6 @@
       <!--</div>-->
     <!--</div>-->
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-      <!--<div class ="row">-->
-        <!--<div class="column column-2 navbar">-->
-          <!--<div class="user">-->
-            <!--<img ng-src="{{userPhoto}}" />-->
-          <!--</div>-->
-        <!--</div>-->
-        <!--<div class="column column-8 navbar"></div>-->
-        <!--<div class="column column-2 navbar">-->
-          <!--&lt;!&ndash;<div class="name">&ndash;&gt;-->
-            <!--<a ng-click="login()" ng-hide="isLoggedIn" href="">Login</a>-->
-            <!--<a ng-click="logout()" ng-show="isLoggedIn" href="">Logout</a>-->
-            <!--<span ng-if="isLoggedIn">Hello, {{username}}! </span>-->
-          <!--&lt;!&ndash;</div>&ndash;&gt;-->
-        <!--</div>-->
-      <!--</div>-->
-      <!--<div class="center">-->
-        <!--<h1>OrbWeaver</h1>-->
-        <!--<location-form weave="weave()"></location-form>-->
-      <!--</div>-->
     </div>
   </body>
 </html>
