@@ -7,6 +7,21 @@ module.factory('spotifyService', function(bandsInTownService, $q, $http, Auth) {
   var endDate = moment(now).add(14, 'days').format('M/DD');
 
   return {
+    getMe: function() {
+      var ret = $q.defer();
+      $http.get(baseUrl + '/v1/me', {
+        headers: {
+          'Authorization': 'Bearer ' + Auth.getAccessToken()
+        }
+      }).success(function(r) {
+        console.log('got userinfo', r);
+        ret.resolve(r);
+      }).error(function(err) {
+        console.log('failed to get userinfo', err);
+        ret.reject(err);
+      });
+      return ret.promise;
+    },
     getArtistIds: function(artists) {
       var artistsArray = [];
       var d = $q.defer();

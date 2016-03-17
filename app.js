@@ -14,10 +14,10 @@
       });
   });
 
-  app.controller('AppController', function($scope, Auth, API, $location, bandsInTownService, spotifyService, userService) {
+  app.controller('AppController', function($scope, Auth, $location, bandsInTownService, spotifyService, userService) {
 
     function checkUser(redirectToLogin) {
-      API.getMe().then(function(userInfo) {
+      spotifyService.getMe().then(function(userInfo) {
         Auth.setDisplayName(userInfo.display_name);
         Auth.setUsername(userInfo.id);
         Auth.setUserCountry(userInfo.country);
@@ -60,14 +60,6 @@
       $scope.isLoggedIn = (Auth.getAccessToken() != '');
 
     });
-    //$scope.showLogout = $scope.isLoggedIn;
-    //$scope.showlogin = !$scope.isLoggedIn;
-
-    //$scope.$on('login', function() {
-    //  $scope.showplayer = true;
-    //  $scope.showlogin = false;
-      //$location.path('/').replace().reload();
-    //});
 
     //$scope.$on('login', function() {
     //});
@@ -90,64 +82,6 @@
     //  $scope.showLogin = false;
     //});
 
-    //$scope.getClass = function(path) {
-    //  if ($location.path().substr(0, path.length) == path) {
-    //    return 'active';
-    //  } else {
-    //    return '';
-    //  }
-    //};
-
-
-
-    //$scope.focusInput = false;
-    //$scope.menuOptions = function(playlist) {
-    //
-    //  var visibilityEntry = [playlist.public ? 'Make secret' : 'Make public', function ($itemScope) {
-    //    API.changePlaylistDetails(playlist.username, playlist.id, {public: !playlist.public})
-    //      .then(function() {
-    //        playlist.public = !playlist.public;
-    //      });
-    //  }];
-
-    //  var own = playlist.username === Auth.getUsername();
-    //  if (own) {
-    //    return [
-    //      visibilityEntry,
-    //      null,
-    //      ['Rename', function ($itemScope) {
-    //        playlist.editing = true;
-    //        $scope.focusInput = true;
-    //      }]
-    //    ];
-    //  } else {
-    //    return [ visibilityEntry ];
-    //  }
-    //};
-
-    //$scope.playlistNameKeyUp = function(event, playlist) {
-    //  if (event.which === 13) {
-    //    // enter
-    //    var newName = event.target.value;
-    //    API.changePlaylistDetails(playlist.username, playlist.id, {name: newName})
-    //      .then(function() {
-    //        playlist.name = newName;
-    //        playlist.editing = false;
-    //        $scope.focusInput = false;
-    //      });
-    //  }
-    //
-    //  if (event.which === 27) {
-    //    // escape
-    //    playlist.editing = false;
-    //    $scope.focusInput = false;
-    //  }
-    //};
-    //
-    //$scope.playlistNameBlur = function(playlist) {
-    //  playlist.editing = false;
-    //  $scope.focusInput = false;
-    //};
     checkUser();
   });
 
@@ -170,3 +104,5 @@
 //Chunk top tracks call into groups of 15 with a timeout between to avoid rate limit. Try doing in app.js rather than method itself because of complexity of using two IIFE's inside of two forEach's
 //Add SASS
 //Add background image
+//Shovel failed 429 calls into their own collection and re-run function
+//check accuracy of process
