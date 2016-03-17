@@ -2,10 +2,6 @@
 
 @media screen and (max-width: 480px) {
 
-  html {
-    margin: 0 !important;
-    padding: 0 !important;
-  }
   body {
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-sharp.jpg');
     /*background: black;*/
@@ -40,24 +36,19 @@
     bottom: 0;
     left: 0;
     right: 0;
-
     margin: auto;
     border: 2px solid white;
     border-radius: 24px;
-
     padding: 6px 18px;
     cursor: hand;
     display: flex;
     justify-content: center;
     align-items: center;
-
     flex: 0 0 160px;
-
     text-align: center;
     line-height: 1.3;
     font-size: 28px;
     text-transform: none;
-
     font-weight: 400;
     font-family: 'Raleway', sans-serif;
     color: white;
@@ -69,7 +60,8 @@
     background: linear-gradient(rgba(207, 255, 68, 0.2), rgba(207, 255, 68, 0.2));
   }
 
-  .logout {
+  /*refactor this, it uses most of .button attributes*/
+  #logout-button {
     z-index: 1000;
     position: absolute;
     top: 7px;
@@ -78,80 +70,32 @@
     height: 14px;
     border: 1px solid white;
     border-radius: 24px;
-
     padding: 6px 18px;
-
     cursor: pointer;
-
     display: flex;
     justify-content: center;
     align-items: center;
-
     flex: 0 0 160px;
-
     text-align: center;
     line-height: 1.3;
     font-size: 14px;
     text-transform: none;
-
     font-weight: 400;
     font-family: 'Raleway', sans-serif;
     color: white;
   }
 
-  .logout:hover {
+  #logout-button:hover {
     background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.1));
   }
 
-
-  .center-nav {
-    height: 325px;
-    background-color: rgba(145, 164, 55, 0.2);
-    margin: auto;
-    position: absolute;
-    top: 0; left: 0; bottom: 0; right: 0;
-  }
-
-  .navbar span {
-    font-family: 'Raleway', sans-serif;
-    font-size: 18px;
-    color: white;
-    float: right;
-    top: 50%;
-    margin: 38px 47px 0 0;
-    opacity: 0.6;
-
-  }
-  .user {
-    /*float: left;*/
-    /*display: inline;*/
-    /*width: 20%;*/
-  }
-  .name a {
-    /*bottom: 50%;*/
-    /*left: 50%;*/
-    float: right;
-  }
-
-  .user img {
-    background-color: rgba(0, 0 ,0 ,1);
-    opacity: 1;
-    max-height: 90px;
-    margin: 4px;
-  }
-  .container {
-    position: relative;
-    width: 100%;
-    height: 100%;
-
-  }
-  h1 {
-    font-family: 'Raleway', sans-serif;
-    color: #91A437;
-    /*font-size: 101px;*/
-    line-height: 1;
-    margin-bottom: 0px;
-  }
+  /*.center-nav {*/
+    /*height: 325px;*/
+    /*background-color: rgba(145, 164, 55, 0.2);*/
+    /*margin: auto;*/
+    /*position: absolute;*/
+    /*top: 0; left: 0; bottom: 0; right: 0;*/
+  /*}*/
 
   .title {
     text-align: center;
@@ -160,34 +104,10 @@
     font-size: 36px;
   }
 
-  input[type="submit"] {
-    display: block;
-    border: none;
-    height: 45px;
-    margin-top: 25px;
-  }
-
   .form .button {
     position: relative;
     height: 36px;
     margin-top: 25px;
-  }
-
-  /*input[type="text"] {*/
-    /*text-align: center;*/
-  /*}*/
-
-  .text-input:focus {
-    outline: 0;
-  }
-
-  .arrow {
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 50px 0 50px 64px;
-    border-color: transparent transparent transparent #cbf57d;
-
   }
 
   .center {
@@ -199,26 +119,26 @@
     transform: translate(-40%,-80%);
   }
 
-  #how-to {
-    height: 200px;
-    width: 400px;
-    background-color: #91A437;
-    border-radius: 24px;
-    position: absolute;
-    top:0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    margin: auto;
-    font-family: 'Raleway', sans-serif;
-    padding: 27px 0 0 0;
-    font-size: 18px;
-    text-align: center;
-  }
+  /*#how-to {*/
+    /*height: 200px;*/
+    /*width: 400px;*/
+    /*background-color: #91A437;*/
+    /*border-radius: 24px;*/
+    /*position: absolute;*/
+    /*top:0;*/
+    /*bottom: 0;*/
+    /*left: 0;*/
+    /*right: 0;*/
+    /*margin: auto;*/
+    /*font-family: 'Raleway', sans-serif;*/
+    /*padding: 27px 0 0 0;*/
+    /*font-size: 18px;*/
+    /*text-align: center;*/
+  /*}*/
 
-  #how-to p {
-    padding: 0 14px 0 14px;
-  }
+  /*#how-to p {*/
+    /*padding: 0 14px 0 14px;*/
+  /*}*/
 
   #search {
     white-space: nowrap;
@@ -231,15 +151,6 @@
     text-align: center;
   }
 
-  .black-bar {
-    background-color: black;
-    width: 100%;
-    height: 42px;
-    z-index: 1000;
-    display: block;
-    position: absolute;
-  }
-
   .text-input {
     border: 0;
     border-bottom: solid 1px #ffffff;
@@ -248,10 +159,9 @@
     padding-top: 20px;
     box-shadow: none;
     color: #cbf57d;
-    /*transform: translate(14%,-35%);*/
     text-align: center;
+    outline: 0;
   }
-
 
   #user-image {
     position: absolute;
@@ -260,7 +170,6 @@
     top: 9%;
     border-radius: 24px;
   }
-
 
   /*Google Autocomplete*/
 
@@ -283,22 +192,9 @@
     color: #cbf57d;
   }
 
-/*.pac-icon {*/
-  /*color: #cbf57d;*/
-/*}*/
-
-/*@media device and (min-width:700px) {*/
-  /*input[type=submit] {*/
-    /*display: none;*/
-  /*}*/
-/*}*/
-/*input {*/
-  /*text-align: center;*/
-  /*transform: translate(-50%,-50%);*/
-
-/*}*/
 }
 
+/*iPhone 5*/
 @media screen and (max-width: 320px){
   #user-image {
     width: 164px;

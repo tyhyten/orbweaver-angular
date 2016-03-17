@@ -28,7 +28,7 @@
 
     <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}">
 
-      <div class="logout" ng-click="logout()" ng-if="isLoggedIn">logout</div>
+      <div id="logout-button" ng-click="logout()" ng-if="isLoggedIn">logout</div>
 
       <div class="login" ng-if="!isLoggedIn">
         <div class="button" ng-click="login()">
