@@ -19,6 +19,7 @@
     <script src="js/services/user.js"></script>
     <script src="js/services/spotify.js"></script>
     <script src="js/directives/locationform.js"></script>
+    <script src="js/directives/venues.js"></script>
 
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
   </head>
@@ -34,11 +35,15 @@
         </div>
       </div>
 
-      <img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />
+      <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />-->
 
-      <div id="search" ng-if="isLoggedIn">
-        <location-form weave="weave()"></location-form>
-      </div>
+      <venues></venues>
+
+      <!--&lt;!&ndash;City selection&ndash;&gt;-->
+      <!--<div id="search" ng-if="isLoggedIn">-->
+        <!--<location-form weave="weave()"></location-form>-->
+      <!--</div>-->
+
 
     </div>
 

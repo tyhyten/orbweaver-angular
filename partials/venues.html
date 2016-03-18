@@ -1,0 +1,12 @@
+Venues
+<form name="venues" class="venues">
+  <!--<div ng-repeat="(venueName, selection) in venues">-->
+    <!--<p>{{venueName}}</p>-->
+    <div ng-repeat="venue in venues track by $index">
+      <label> {{venue.name}}
+        <input type="checkbox" ng-model="venues[$index].selected">
+      </label>
+    </div>
+  <input type="submit" class="button" ng-click="save()">
+  <!--</div>-->
+</form>

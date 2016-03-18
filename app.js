@@ -120,9 +120,10 @@
 
 //OrbWeaver will initially only be for Denver in order to avoid limiting users to a random selection of 50 of 400 artists, by allowing users to select venues.
 //
-//- Grab all events for city from bandsintown, then generate top tracks (and associate with venue name), cache this daily at 12am
-//
+//- Grab all events for city from bandsintown, then generate top tracks (and associate with venue name), cache this daily at 12am in a Rails backend
+//- Do this without backend/cache initially. Start the grabbing events on page load, then make spotify getTopTracks call with the narrowed selection.
 //
 //1. Login
 //2. Select Venues
 //3. Filter cached tracks by venue and create playlist in user's account
+//4. display artist info and links

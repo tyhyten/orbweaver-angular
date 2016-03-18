@@ -3,8 +3,8 @@
 @media screen and (max-width: 480px) {
 
   body {
-    background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-sharp.jpg');
-    /*background: black;*/
+    /*background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('background-sharp.jpg');*/
+    background: black;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -17,8 +17,8 @@
   }
 
   .blurred {
-    background-image: url('background-blurred.jpg');
-    /*background: black;*/
+    /*background-image: url('background-blurred.jpg');*/
+    background: black;
     overflow: hidden;
     -webkit-background-size: cover;
     -moz-background-size: cover;
@@ -139,6 +139,15 @@
   /*#how-to p {*/
     /*padding: 0 14px 0 14px;*/
   /*}*/
+
+  #venues {
+    color: white;
+  }
+
+  #venues, input, label {
+    color: white;
+    display: inline-block;
+  }
 
   #search {
     white-space: nowrap;
