@@ -25,3 +25,14 @@ module.directive('venues', function(){
 
   }
 });
+
+//ogden - 2793, 1112651
+//larimer - 29433
+//bluebird theater - 3180634, 1160773
+//summit - 1068578
+//marquis - 5235, 1058486
+//pepsi center - 1733440
+//gothic - 746674, 803
+//1st Bank - 835190
+//fillmore - 602147
+

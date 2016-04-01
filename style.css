@@ -140,14 +140,29 @@
     /*padding: 0 14px 0 14px;*/
   /*}*/
 
-  #venues {
+  table {
     color: white;
+    font-size: 45px;
+    font-family: 'Raleway', sans-serif;
+    /*width: 525px;*/
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-45%,-54%);
   }
 
-  #venues, input, label {
-    color: white;
-    display: inline-block;
+
+  .venue-list {
+    text-align: left;
   }
+
+
+
+  /*#venues, input, label {*/
+    /*color: white;*/
+    /*display: inline-block;*/
+  /*}*/
 
   #search {
     white-space: nowrap;

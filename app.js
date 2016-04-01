@@ -64,11 +64,15 @@
     //$scope.$on('login', function() {
     //});
 
+    console.log('hi', bandsInTownService.getBandsByVenues());
+
     $scope.weave = weave;
+
+    //weave();
 
     function weave() {
       console.log('weaving');
-      bandsInTownService.getBands(userService.getUserLocation()).then(function(bandsResponse) {
+      bandsInTownService.getBandsByVenues().then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
@@ -77,9 +81,9 @@
       });
     }
 
-    bandsInTownService.getBands("denver,co").then(function(response){
-      console.log(response);
-    });
+    //bandsInTownService.getBands("denver,co").then(function(response){
+    //  console.log(response);
+    //});
 
     //$scope.$on('logout', function() {
     //  $scope.showLogin = false;
