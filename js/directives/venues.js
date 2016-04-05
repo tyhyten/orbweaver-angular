@@ -6,6 +6,7 @@ module.directive('venues', function(){
     scope: {},
     templateUrl: 'partials/venues.html',
     link: function(scope, el, attrs){
+      scope.master = {};
       scope.venues = [
         { name: "ogden", selected: false },
         { name: "larimer", selected: false },
@@ -18,8 +19,8 @@ module.directive('venues', function(){
         { name: "firstBank", selected: false }
       ];
 
-      scope.save = function(){
-        console.log(scope.venues)
+      scope.save = function(venues){
+        scope.master = angular.copy(venues);
       }
     }
 
