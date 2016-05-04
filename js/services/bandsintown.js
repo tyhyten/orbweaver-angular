@@ -10,7 +10,7 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
   var endDate = moment(now).add(14, 'days').format('YYYY-MM-DD');
   var venues = [];
   var userLocation = 'Denver, CO';
-  var venueIds = ["2793", "1112651", "29433", "3180634", '1160773', '1068578', '5235', '1058486', '1733440', '746674', '803', '835190', '602147'];
+  //var venueIds = ["2793", "1112651", "29433", "3180634", '1160773', '1068578', '5235', '1058486', '1733440', '746674', '803', '835190', '602147'];
   var venueArtists = [];
 
   return {
@@ -25,7 +25,7 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
       });
       return d.promise;
     },
-    getBandsByVenues: function() {
+    getBandsByVenues: function(venueIds) {
       var d = $q.defer();
       var promises = [];
       var artistNames = [];
@@ -44,7 +44,7 @@ module.factory('bandsInTownService', function(Auth, $q, $http) {
       });
 
       $q.all(promises).then(function(results){
-        var endDate = moment().add(7, 'days');
+        var endDate = moment().add(14, 'days');
         var now = moment();
         mergedResults = [].concat.apply([], results);
         mergedResults.forEach(function(event){

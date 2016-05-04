@@ -64,7 +64,7 @@
     //$scope.$on('login', function() {
     //});
 
-    console.log('hi', bandsInTownService.getBandsByVenues());
+    //console.log('hi', bandsInTownService.getBandsByVenues());
 
     $scope.weave = weave;
 
@@ -72,7 +72,7 @@
 
     function weave() {
       console.log('weaving');
-      bandsInTownService.getBandsByVenues().then(function(bandsResponse) {
+      bandsInTownService.getBandsByVenues([2793, 1112651]).then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
@@ -109,7 +109,6 @@
 //Plug user data and city into a backend via API call
 //Disable submit button while playlist is being created to prevent restarting the process
 //Chunk top tracks call into groups of 15 with a timeout between to avoid rate limit. Try doing in app.js rather than method itself because of complexity of using two IIFE's inside of two forEach's
-//Add SASS
 //Add background image v
 //Shovel failed 429 calls into their own collection and re-run function after timeout
 
@@ -131,3 +130,5 @@
 //2. Select Venues
 //3. Filter cached tracks by venue and create playlist in user's account
 //4. display artist info and links
+
+// run gulp to get SCSS
