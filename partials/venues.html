@@ -1,7 +1,7 @@
 Venues
 <form name="venues" class="venues">
   <table>
-    <tr ng-repeat="venue in venues track by $index" class="venue-list">
+    <tr ng-repeat="venue in venues track by $index" class="venue-list green pull-right">
       <td><label> {{venue.name}} </label></td>
       <td><input type="checkbox" ng-model="venues[$index].selected" class="my-input"></td>
     </tr>
