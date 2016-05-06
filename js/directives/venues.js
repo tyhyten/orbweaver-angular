@@ -36,10 +36,13 @@ module.directive('venues', function(){
         return venueIds;
       }
 
+      var state = true;
+
       scope.checkAll = function() {
         scope.venues.forEach(function(venue){
-          venue.selected = !venue.selected
-        })
+          venue.selected = state;
+        });
+        state = !state;
       };
     }
 
