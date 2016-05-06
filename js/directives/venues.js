@@ -3,10 +3,11 @@ var module = angular.module('OrbWeaver');
 module.directive('venues', function(){
   return {
     restrict: 'E',
-    //scope: {},
+    scope: {
+      weave: '='
+    },
     templateUrl: 'partials/venues.html',
     link: function(scope, el, attrs){
-      scope.master = {};
       scope.venues = [
         { name: "ogden", selected: false, id: [2793, 1112651] },
         { name: "larimer", selected: false, id: [29433] },
@@ -19,22 +20,28 @@ module.directive('venues', function(){
         { name: "firstBank", selected: false, id: [835190] }
       ];
 
-      scope.save = function(venues){
-        scope.weave();
-        //scope.master = angular.copy(venues);
-        //scope.master.forEach(function (venue) {
-        //  if (venue.selected) {
-        //    console.log(venue)
-        //  }
-        //})
-
+      scope.save = function() {
+        var savedVenues = angular.copy(scope.venues);
+        var selectedVenueIds = compileVenueIds(savedVenues);
+        scope.weave(selectedVenueIds);
       };
 
+      function compileVenueIds(venues) {
+        var venueIds = [];
+        venues.forEach(function(venue) {
+          if (venue.selected) {
+          venueIds = venueIds.concat(venue.id);
+          }
+        });
+        return venueIds;
+      }
 
     }
 
   }
 });
+
+//Venue Bandsintown IDs
 
 //ogden - 2793, 1112651
 //larimer - 29433

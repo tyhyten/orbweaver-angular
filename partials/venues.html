@@ -1,10 +1,10 @@
 Venues
 <form name="venues" class="venues">
   <table>
-    <tr ng-repeat="venue in venues track by $index" class="venue-list green pull-right">
+    <tr ng-repeat="venue in venues track by $index" class="venue-list">
       <td><label> {{venue.name}} </label></td>
       <td><input type="checkbox" ng-model="venues[$index].selected" class="my-input"></td>
     </tr>
   </table>
-  <input type="submit" ng-click="save(venues)">
+  <input type="submit" ng-click="save()">
 </form>

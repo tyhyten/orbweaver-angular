@@ -70,9 +70,9 @@
 
     //weave();
 
-    function weave() {
+    function weave(venueIds) {
       console.log('weaving');
-      bandsInTownService.getBandsByVenues([2793, 1112651]).then(function(bandsResponse) {
+      bandsInTownService.getBandsByVenues(venueIds).then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
