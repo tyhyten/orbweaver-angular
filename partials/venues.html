@@ -5,6 +5,10 @@ Venues
       <td><label> {{venue.name}} </label></td>
       <td><input type="checkbox" ng-model="venues[$index].selected" class="my-input"></td>
     </tr>
+    <tr>
+      <td><label>check all</label></td>
+      <td><input type="checkbox" ng-click="checkAll()"></td>
+    </tr>
   </table>
   <input type="submit" ng-click="save()">
 </form>
