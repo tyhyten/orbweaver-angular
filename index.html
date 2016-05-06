@@ -29,12 +29,11 @@
     <div ng-controller="AppController as ctrl" ng-class="{blurred: !isLoggedIn}" class="container">
 
       <a ng-click="logout()" ng-show="isLoggedIn">logout</a>
-
       <a ng-click="login()" ng-show="!isLoggedIn">login</a>
 
       <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" />-->
 
-      <venues weave="ctrl.weave"></venues>
+      <venues weave="ctrl.weave" ng-if="isLoggedIn"></venues>
 
     </div>
 
