@@ -16,6 +16,8 @@
 
   app.controller('AppController', function($scope, Auth, $location, bandsInTownService, spotifyService, userService) {
 
+    var ctrl = this;
+
     function checkUser(redirectToLogin) {
       spotifyService.getMe().then(function(userInfo) {
         Auth.setDisplayName(userInfo.display_name);
@@ -66,11 +68,11 @@
 
     //console.log('hi', bandsInTownService.getBandsByVenues());
 
-    $scope.weave = weave;
+    //$scope.weave = weave;
 
     //weave();
 
-    function weave(venueIds) {
+    ctrl.weave = function(venueIds) {
       console.log('weaving');
       bandsInTownService.getBandsByVenues(venueIds).then(function(bandsResponse) {
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
@@ -79,7 +81,8 @@
           });
         });
       });
-    }
+    };
+
 
     //bandsInTownService.getBands("denver,co").then(function(response){
     //  console.log(response);
@@ -90,6 +93,7 @@
     //});
 
     checkUser();
+    return ctrl;
   });
 
 })();

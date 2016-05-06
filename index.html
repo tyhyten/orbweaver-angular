@@ -26,25 +26,15 @@
   </head>
   <body>
 
-    <div ng-controller="AppController" ng-class="{blurred: !isLoggedIn}">
+    <div ng-controller="AppController as ctrl" ng-class="{blurred: !isLoggedIn}" class="container">
 
-      <div id="logout-button" ng-click="logout()" ng-if="isLoggedIn">logout</div>
+      <a ng-click="logout()" ng-show="isLoggedIn">logout</a>
 
-      <div class="login" ng-if="!isLoggedIn">
-        <div class="button" ng-click="login()">
-          login
-        </div>
-      </div>
+      <a ng-click="login()" ng-show="!isLoggedIn">login</a>
 
-      <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" id="user-image" />-->
+      <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" />-->
 
-      <venues weave="weave"></venues>
-
-      <!--&lt;!&ndash;City selection&ndash;&gt;-->
-      <!--<div id="search" ng-if="isLoggedIn">-->
-        <!--<location-form weave="weave()"></location-form>-->
-      <!--</div>-->
-
+      <venues weave="ctrl.weave"></venues>
 
     </div>
 
