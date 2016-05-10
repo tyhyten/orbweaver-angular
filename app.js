@@ -1,7 +1,8 @@
 (function() {
   var app = angular.module('OrbWeaver', [
     'ngRoute',
-    'google.places'
+    'google.places',
+    'ngAnimate'
   ]);
 
   app.config(function($routeProvider) {
@@ -17,6 +18,7 @@
   app.controller('AppController', function($scope, Auth, $location, bandsInTownService, spotifyService, userService) {
 
     var ctrl = this;
+    $scope.venueLoadComplete = false;
 
     function checkUser(redirectToLogin) {
       spotifyService.getMe().then(function(userInfo) {
@@ -75,6 +77,7 @@
     ctrl.weave = function(venueIds) {
       console.log('weaving');
       bandsInTownService.getBandsByVenues(venueIds).then(function(bandsResponse) {
+        $scope.venueLoadComplete = true;
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
