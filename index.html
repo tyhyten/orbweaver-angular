@@ -28,15 +28,40 @@
   </head>
   <body>
 
-    <div ng-controller="AppController as ctrl" ng-class="{blurred: !isLoggedIn}" class="container">
+    <div ng-controller="AppController as ctrl" class="container blurred">
+      <div class="row">
+        <div class="col-xs-1 vertical-nav" ng-show="isLoggedIn">
+          <div class="row">
+            <img class="spotify-logo" src="/spotify_icon_rgb_green.png">
+            <img class="user-photo" ng-src="{{userPhoto}}" ng-if="isLoggedIn" />
+            <span>{{displayName}}</span>
+          </div>
+          <i class="glyphicon glyphicon-log-out" ng-click="logout()"></i>
+        </div>
+        <div class="col-xs-11">
+          <div class="welcome" ng-show="ctrl.showWelcome && !isLoggedIn">
+            <div class="title">orbweaver</div>
+            <h4 class="tagline">discover live music.</h4>
+            <i class="glyphicon glyphicon-download" ng-click="ctrl.showLogin()"></i>
+          </div>
 
-      <a ng-click="logout()" ng-show="isLoggedIn">logout</a>
-      <a ng-click="login()" ng-show="!isLoggedIn">login</a>
+          <div class="welcome login" ng-show="!ctrl.showWelcome && !isLoggedIn">
+            <h4>Login via Spotify to start listening.</h4>
+            <img src="/spotify_logo_rgb_green.png">
+            <i class="glyphicon glyphicon-log-in" ng-click="login()"></i>
+          </div>
 
-      <!--<img ng-src="{{userPhoto}}" ng-if="isLoggedIn" />-->
+          <venues weave="ctrl.weave" ng-if="isLoggedIn && !ctrl.success"></venues>
 
-      <venues weave="ctrl.weave" ng-if="isLoggedIn"></venues>
+          <div class="welcome successful" ng-show="isLoggedIn && ctrl.success">
+            <div class="title">Success!</div>
+            <h4>A playlist containing the top track for each artist playing at ____ between  ____ and ____ has been created in your Spotify account.</h4>
+            <i class="glyphicon glyphicon-ok-circle"></i>
+          </div>
 
+
+        </div>
+      </div>
 
 
     </div>

@@ -1,5 +1,90 @@
 @import "../sass/assets/stylesheets/bootstrap";
+@import url(https://fonts.googleapis.com/css?family=Roboto);
 //@import "bootstrap/theme";
-.green {
-  color: green;
+body {
+  font-family: 'Roboto', sans-serif;
+}
+
+.blurred {
+  background-image: url('/background-blurred.jpg');
+  overflow: visible;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  height: auto;
+  width: auto;
+  text-align: center;
+  .title {
+    font-size: 4em;
+    color: white;
+    text-align: center;
+    letter-spacing: 2px;
+    margin-bottom: -18px;
+  }
+  .tagline {
+    letter-spacing: 5.7px;
+    margin-top: 0;
+    text-align: right;
+  }
+  .glyphicon {
+    font-size: 45px;
+    margin-top: 45px;
+  }
+  &.login {
+    img {
+      width: 220px;
+      text-align: center;
+      display: block;
+      margin: auto;
+    }
+  }
+  &.successful {
+
+  }
+}
+
+.venues {
+  width: 250px;
+  height: auto;
+  label {
+    font-size: 36px;
+  }
+  td {
+    padding-left: 25px;
+  }
+  .btn {
+    margin-bottom: 9px;
+  }
+}
+
+.vertical-nav {
+  background-color: black;
+  height: 100%;
+  color: white;
+  text-align: center;
+  .glyphicon {
+    color: white;
+    font-size: 25px;
+    margin: 9px;
+  }
+  .user-photo {
+    border: 4px solid black;
+    width: 100%;
+  }
+  .spotify-logo {
+    position: absolute;
+    top: 54px;
+    left: 31px;
+    width: 21px;
+  }
 }

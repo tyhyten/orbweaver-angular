@@ -19,6 +19,12 @@
 
     var ctrl = this;
     $scope.venueLoadComplete = false;
+    ctrl.showWelcome = true;
+    ctrl.success = false;
+
+    ctrl.showLogin = function() {
+      ctrl.showWelcome = false;
+    };
 
     function checkUser(redirectToLogin) {
       spotifyService.getMe().then(function(userInfo) {
@@ -81,6 +87,7 @@
         spotifyService.getArtistIds(bandsResponse).then(function(artistIds){
           spotifyService.getTopTracks(artistIds).then(function(topTracks){
             spotifyService.addTracksToPlaylist(topTracks);
+            ctrl.success = true;
           });
         });
       });
@@ -91,9 +98,9 @@
     //  console.log(response);
     //});
 
-    //$scope.$on('logout', function() {
-    //  $scope.showLogin = false;
-    //});
+    $scope.$on('logout', function() {
+      $scope.isLoggedIn = false;
+    });
 
     checkUser();
     return ctrl;

@@ -1,5 +1,4 @@
-Venues
-<form name="venues" class="venues">
+<form name="venues" class="welcome venues">
   <table>
     <tr ng-repeat="venue in venues track by $index" class="venue-list">
       <td><label> {{venue.name}} </label></td>
@@ -10,5 +9,5 @@ Venues
       <td><input type="checkbox" ng-click="checkAll()"></td>
     </tr>
   </table>
-  <input type="submit" ng-click="save()">
+  <input class="btn btn-success" type="submit" value="Weave Playlist" ng-click="save()">
 </form>
